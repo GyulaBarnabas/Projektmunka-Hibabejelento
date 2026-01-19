@@ -174,7 +174,7 @@ Content-Type: application/json
 
 {
   "terem": "303-as labor",
-  "leiras": "Ablak nem záródik rendesen."
+  "leiras": "A tanári gép nem kapcsolbe"
 }
 
 ### Új hiba ID kinyerése
@@ -203,7 +203,7 @@ Content-Type: application/json
 
 {
   "terem": "Karbantartó műhely",
-  "leiras": "Elfogyott a csavar."
+  "leiras": "Kiesett a csavar a gépből."
 }
 
 ### 6. Hiba kijavítottra állítása (Karbantartó által) - /api/hibak/:id/javitas

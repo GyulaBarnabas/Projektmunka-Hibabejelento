@@ -197,7 +197,7 @@ A sikeres bejelentkezés után kapott tokent minden védett kérés `Authorizati
     ```json
     {
       "terem": "Folyosó A",
-      "leiras": "Kiégett egy villanykörte"
+      "leiras": "Kiégett egy projektor."
     }
     ```
 

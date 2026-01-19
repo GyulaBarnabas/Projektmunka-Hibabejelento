@@ -64,7 +64,7 @@
       FOREIGN KEY (javito_id) REFERENCES felhasznalok(id)
     );
 
-* * 
+
 
 ## Tesztadatok
 

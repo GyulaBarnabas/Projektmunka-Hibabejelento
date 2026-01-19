@@ -1,6 +1,6 @@
 # Hibabejelentő
 
-## Vizsgaremek (2025. május)
+## Vizsgaremek (2026. május)
 
 Iskolánk portáján van egy füzet. Ebbe írják be a tanárok az iskolában észlelt hibákat, amelyeket utána a karbantartók kijavítanak.
 
@@ -40,7 +40,7 @@ Az adatokat egy adatbázisban kell tárolni, amelyet egy API-n keresztül lehet 
 ### Indítás
 
 * A szerver indítása: `npm start` vagy `node server.js`
-* Az alkalmazás elérhető lesz a `http://localhost:5000` címen.
+* Az alkalmazás elérhető lesz a `http://localhost:3000` címen.
 
 ## Dokumentáció
 
