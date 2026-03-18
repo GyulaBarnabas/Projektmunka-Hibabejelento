@@ -1,0 +1,249 @@
+@baseUrl = http://localhost:3000/api
+
+###
+# ==============================================================================
+# Felhasználókezelés
+# ==============================================================================
+
+### 1. Admin bejelentkezése (token kinyerése) - /api/login
+#> VÁRT EREDMÉNY: 200 OK - Sikeres bejelentkezés, token visszaküldve
+# @name loginAdmin
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+  "felhasznalonev": "admin",
+  "jelszo": "Minad123"
+}
+
+### Token mentése változóba
+@adminToken = {{loginAdmin.response.body.token}}
+
+### 1. Tanár bejelentkezése (token kinyerése) - /api/login
+#> VÁRT EREDMÉNY: 200 OK - Sikeres bejelentkezés, token visszaküldve
+# @name loginTanar
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+  "felhasznalonev": "kissp",
+  "jelszo": "kissp"
+}
+
+### Token mentése változóba
+@tanarToken = {{loginTanar.response.body.token}}
+
+### 1. Karbantartó bejelentkezése (token kinyerése) - /api/login
+#> VÁRT EREDMÉNY: 200 OK - Sikeres bejelentkezés, token visszaküldve
+# @name loginKarbantarto
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+  "felhasznalonev": "szabob",
+  "jelszo": "szabob"
+}
+
+### Token mentése változóba
+@karbantartoToken = {{loginKarbantarto.response.body.token}}
+
+### 2. Profiladatok lekérdezése (Admin) - /api/profil
+#> VÁRT EREDMÉNY: 200 OK - Admin profiladatok sikeresen lekérdezve
+GET {{baseUrl}}/profil
+Authorization: Bearer {{adminToken}}
+
+### 2. Profiladatok lekérdezése (Tanár) - /api/profil
+#> VÁRT EREDMÉNY: 200 OK - Tanár profiladatok sikeresen lekérdezve
+GET {{baseUrl}}/profil
+Authorization: Bearer {{tanarToken}}
+
+### 5. Felhasználók listázása (Admin által) - /api/felhasznalok
+#> VÁRT EREDMÉNY: 200 OK - Felhasználók listája sikeresen lekérdezve
+GET {{baseUrl}}/felhasznalok
+Authorization: Bearer {{adminToken}}
+
+### 5. Felhasználók listázása (Tanár által) - /api/felhasznalok
+#> VÁRT EREDMÉNY: 403 Forbidden - Nincs jogosultsága ehhez a művelethez.
+GET {{baseUrl}}/felhasznalok
+Authorization: Bearer {{tanarToken}}
+
+### 5. Felhasználók listázása (Karbantartó által) - /api/felhasznalok
+#> VÁRT EREDMÉNY: 200 OK - Felhasználók listája sikeresen lekérdezve
+GET {{baseUrl}}/felhasznalok
+Authorization: Bearer {{karbantartoToken}}
+
+### 5.1 Új felhasználó létrehozása (Admin által) - /api/felhasznalok
+#> VÁRT EREDMÉNY: 201 Created - Új felhasználó sikeresen létrehozva
+# @name ujFelhasznaloAdmin
+POST {{baseUrl}}/felhasznalok
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+{
+  "nev": "Teszt Tanár",
+  "felhasznalonev": "tesztt",
+  "jelszo": "TesztJelszo123",
+  "szerep": "tanar"
+}
+
+### Az új felhasználó ID-jének kinyerése a törléshez
+@ujFelhasznaloId = {{ujFelhasznaloAdmin.response.body.id}}
+
+### 5.1 Új felhasználó létrehozása (Tanár által - SIKERTELENNEK KELL LENNIE) - /api/felhasznalok
+#> VÁRT EREDMÉNY: 403 Forbidden - Nincs jogosultsága ehhez a művelethez.
+POST {{baseUrl}}/felhasznalok
+Authorization: Bearer {{tanarToken}}
+Content-Type: application/json
+
+{
+  "nev": "Teszt Karbantartó",
+  "felhasznalonev": "tesztk",
+  "jelszo": "TesztJelszo123",
+  "szerep": "karbantarto"
+}
+
+### 5.1 Új felhasználó létrehozása (Hiányzó adatokkal - SIKERTELENNEK KELL LENNIE) - /api/felhasznalok
+#> VÁRT EREDMÉNY: 400 Bad Request - Minden mező kitöltése kötelező.
+POST {{baseUrl}}/felhasznalok
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+{
+  "nev": "Hiányos",
+  "felhasznalonev": "hiányos",
+  "szerep": "tanar"
+}
+
+### 5.1 Új felhasználó létrehozása (Érvénytelen szerepkörrel - SIKERTELENNEK KELL LENNIE) - /api/felhasznalok
+#> VÁRT EREDMÉNY: 400 Bad Request - Érvénytelen szerepkör.
+POST {{baseUrl}}/felhasznalok
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+{
+  "nev": "Rossz Szerep",
+  "felhasznalonev": "rosszszerep",
+  "jelszo": "Jelszo123",
+  "szerep": "diak"
+}
+
+### 5.2 Felhasználó törlése (Admin által) - /api/felhasznalok/:id
+#> VÁRT EREDMÉNY: 200 OK - Felhasználó sikeresen törölve
+# Feltételezzük, hogy a {{ujFelhasznaloId}} létezik és nincs hozzá kapcsolódó hiba
+DELETE {{baseUrl}}/felhasznalok/{{ujFelhasznaloId}}
+Authorization: Bearer {{adminToken}}
+
+### 5.2 Admin próbálja saját magát törölni (SIKERTELENNEK KELL LENNIE) - /api/felhasznalok/:id
+#> VÁRT EREDMÉNY: 400 Bad Request - Adminisztrátor nem törölheti saját magát.
+# Feltételezzük, hogy az admin ID-ja 1
+DELETE {{baseUrl}}/felhasznalok/1
+Authorization: Bearer {{adminToken}}
+
+### 5.2 Felhasználó törlése (Admin által - SIKERTELENNEK KELL LENNIE, mert van hibabejelentése) - /api/felhasznalok/:id
+#> VÁRT EREDMÉNY: 409 Conflict - A felhasználó nem törölhető, mert kapcsolódó hibabejegyzései vannak.
+# Feltételezzük, hogy a felhasználó ID-ja 2 (kissp) és van hibabejelentése
+DELETE {{baseUrl}}/felhasznalok/2
+Authorization: Bearer {{adminToken}}
+
+###
+# ==============================================================================
+# Hibakezelés
+# ==============================================================================
+
+### 3. Összes hiba listázása (Tanárként) - /api/hibak
+#> VÁRT EREDMÉNY: 200 OK - Hibák listája sikeresen lekérdezve
+GET {{baseUrl}}/hibak
+Authorization: Bearer {{tanarToken}}
+
+### 3. Csak "bejelentve" állapotú hibák listázása - /api/hibak
+#> VÁRT EREDMÉNY: 200 OK - "Bejelentve" állapotú hibák listája sikeresen lekérdezve
+GET {{baseUrl}}/hibak?allapot=bejelentve
+Authorization: Bearer {{tanarToken}}
+
+### 3. Csak "kijavitva" állapotú hibák listázása - /api/hibak
+#> VÁRT EREDMÉNY: 200 OK - "Kijavítva" állapotú hibák listája sikeresen lekérdezve
+GET {{baseUrl}}/hibak?allapot=kijavítva
+Authorization: Bearer {{tanarToken}}
+
+### 4. Új hiba bejelentése (Tanár által) - /api/hibak
+#> VÁRT EREDMÉNY: 201 Created - Új hiba sikeresen bejelentve
+# @name ujHibaTanar
+POST {{baseUrl}}/hibak
+Authorization: Bearer {{tanarToken}}
+Content-Type: application/json
+
+{
+  "terem": "303-as labor",
+  "leiras": "Ablak nem záródik rendesen."
+}
+
+### Új hiba ID kinyerése
+@ujHibaIdTanar = {{ujHibaTanar.response.body.id}}
+
+### 4. Új hiba bejelentése (Admin által) - /api/hibak
+#> VÁRT EREDMÉNY: 201 Created - Új hiba sikeresen bejelentve
+# @name ujHibaAdmin
+POST {{baseUrl}}/hibak
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+{
+  "terem": "Tornaterem",
+  "leiras": "Kosárlabda palánk meglazult."
+}
+
+### Új hiba ID kinyerése
+@ujHibaIdAdmin = {{ujHibaAdmin.response.body.id}}
+
+### 4. Hiba bejelentése (Karbantartó által - SIKERTELENNEK KELL LENNIE) - /api/hibak
+#> VÁRT EREDMÉNY: 403 Forbidden - Nincs jogosultsága ehhez a művelethez
+POST {{baseUrl}}/hibak
+Authorization: Bearer {{karbantartoToken}}
+Content-Type: application/json
+
+{
+  "terem": "Karbantartó műhely",
+  "leiras": "Elfogyott a csavar."
+}
+
+### 6. Hiba kijavítottra állítása (Karbantartó által) - /api/hibak/:id/javitas
+#> VÁRT EREDMÉNY: 200 OK - Hiba sikeresen kijavítottra állítva
+# Feltételezzük, hogy a {{ujHibaIdTanar}} létezik és "bejelentve" állapotú
+PUT {{baseUrl}}/hibak/{{ujHibaIdTanar}}/javitas
+Authorization: Bearer {{karbantartoToken}}
+
+### 6. Hiba kijavítottra állítása (Admin által) - /api/hibak/:id/javitas
+#> VÁRT EREDMÉNY: 200 OK - Hiba sikeresen kijavítottra állítva 
+# Feltételezzük, hogy a {{ujHibaIdAdmin}} létezik és "bejelentve" állapotú
+PUT {{baseUrl}}/hibak/{{ujHibaIdAdmin}}/javitas
+Authorization: Bearer {{adminToken}}
+
+### 6. Hiba kijavítottra állítása (Ha már "kijavitva" - SIKERTELENNEK KELL LENNIE) - /api/hibak/:id/javitas
+#> VÁRT EREDMÉNY: 409 Conflict - A hiba már ki van javítva
+# Feltételezzük, hogy a {{ujHibaIdTanar}} már "kijavitva"
+PUT {{baseUrl}}/hibak/{{ujHibaIdTanar}}/javitas
+Authorization: Bearer {{karbantartoToken}}
+
+###
+# ==============================================================================
+# Hibás kérések tesztelése
+# ==============================================================================
+
+### 1. Bejelentkezés hibás adatokkal - /api/login
+#> VÁRT EREDMÉNY: 401 Unauthorized - Hibás felhasználónév vagy jelszó
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+  "felhasznalonev": "nemletezo",
+  "jelszo": "rosszjelszo"
+}
+
+### 2. Végpont elérése token nélkül (Profil endpoint példaként) - /api/profil
+#> VÁRT EREDMÉNY: 401 Unauthorized - Hiányzó vagy érvénytelen token
+GET {{baseUrl}}/profil
+
+### 2. Végpont elérése érvénytelen tokennel (Profil endpoint példaként) - /api/profil
+#> VÁRT EREDMÉNY: 403 Forbidden - Érvénytelen token vagy lejárt munkamenet
+GET {{baseUrl}}/profil
+Authorization: Bearer ervenytelentoken123

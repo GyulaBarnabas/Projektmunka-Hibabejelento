@@ -64,7 +64,7 @@
       FOREIGN KEY (javito_id) REFERENCES felhasznalok(id)
     );
 
-
+* * 
 
 ## Tesztadatok
 
@@ -83,12 +83,12 @@
 
 ### **2️⃣ Hibák (`hibak`)**
 
-      INSERT INTO hibak (datum, bejelento_id, terem, leiras, allapot, javito_id,      javitas_datuma) VALUES
-        ('2026-03-01', 2, '101-es terem', 'Nincs internetkapcsolat a 05-ös munkaállomáson.',      'bejelentve', NULL, NULL),
-        ('2026-02-27', 3, '205-ös terem', 'A projektor képe sárga, valószínűleg kábelhiba.',      'bejelentve', NULL, NULL),
-        ('2026-03-30', 2, '23-as terem', 'A 09-es munkaállomás képernyője nem kapcsolodik be.     ', 'kijavítva', 4, '2025-05-31'),
-        ('2026-03-28', 3, 'Tanári szoba', 'A hálózati nyomtató elakadást jelez, nem nyomtat.      ', 'kijavítva', 5, '2025-05-29'),
-        ('2026-03-02', 2, 'Könyvtár', 'Lassú a Wi-Fi, a diákok nem tudnak bejelentkezni.',      'bejelentve', NULL, NULL);
+    INSERT INTO hibak (datum, bejelento_id, terem, leiras, allapot, javito_id, javitas_datuma) VALUES
+      ('2025-06-01', 1, '101-es terem', 'Eltört egy szék.', 'bejelentve', NULL, NULL),
+      ('2025-06-01', 2, 'Folyosó', 'A folyosón nem ég a lámpa.', 'bejelentve', NULL, NULL),
+      ('2025-05-30', 1, '201-es terem', 'A projektor nem működik.', 'kijavítva', 3, '2025-05-31'),
+      ('2025-05-28', 2, 'Tanári', 'Csöpög a csap.', 'kijavítva', 4, '2025-05-29'),
+      ('2025-06-02', 1, 'Könyvtár', 'Eltört polc.', 'bejelentve', NULL, NULL);
 
 * * *
 
