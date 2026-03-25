@@ -29,8 +29,8 @@ INSERT INTO felhasznalok (nev, felhasznalonev, jelszo, szerep) VALUES
   ('Tóth Károly', 'tothk', '$2b$10$aa0hZFBPQWa6p65QJNMg../YKNoAMLr1IS3zT4kgb1BBF.bk14U82', 'karbantarto');
 
 INSERT INTO hibak (datum, bejelento_id, terem, leiras, allapot, javito_id, javitas_datuma) VALUES
-  ('2025-06-01', 1, '101-es terem', 'Eltört egy szék.', 'bejelentve', NULL, NULL),
-  ('2025-06-01', 2, 'Folyosó', 'A folyosón nem ég a lámpa.', 'bejelentve', NULL, NULL),
-  ('2025-05-30', 1, '201-es terem', 'A projektor nem működik.', 'kijavítva', 4, '2025-05-31'),
-  ('2025-05-28', 2, 'Tanári', 'Csöpög a csap.', 'kijavítva', 5, '2025-05-29'),
-  ('2025-06-02', 1, 'Könyvtár', 'Eltört polc.', 'bejelentve', NULL, NULL);
+  ('2025-06-01', 1, '101-es terem', 'A tantermi számítógép nem indul el, a tápegység kattog bekapcsoláskor.', 'bejelentve', NULL, NULL),
+  ('2025-06-01', 2, 'Informatika terem', 'Az iskolai Wi-Fi hálózat folyamatosan megszakad, a diákok nem tudnak csatlakozni az e-napló rendszerhez.', 'bejelentve', NULL, NULL),
+  ('2025-05-30', 1, '201-es terem', 'Az interaktív tábla szoftvere lefagyott frissítés közben, nem lehet újraindítani.', 'kijavítva', 4, '2025-05-31'),
+  ('2025-05-28', 2, 'Tanári', 'A hálózati nyomtató nem érhető el a tanári gépekről, a nyomtatási sor megtelik és nem ürül.', 'kijavítva', 5, '2025-05-29'),
+  ('2025-06-02', 1, 'Könyvtár', 'A könyvtári kölcsönző rendszer adatbázisa hibát jelez, az új könyvek bevitele nem lehetséges.', 'bejelentve', NULL, NULL);
