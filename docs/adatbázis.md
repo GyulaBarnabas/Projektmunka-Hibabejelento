@@ -12,7 +12,7 @@
 | `nev`            | TEXT        | Felhasználó teljes neve.           |
 | `felhasznalonev` | TEXT UNIQUE | Egyedi bejelentkezési név.         |
 | `jelszo`         | TEXT        | Jelszó (hash-elt).                 |
-| `szerep`         | TEXT        | `tanar` vagy `karbantarto`.        |
+| `szerep`         | TEXT        | `admin`, `tanar` vagy `karbantarto`. |
 
 * * *
 
@@ -25,7 +25,7 @@
 | `bejelento_id`   | INTEGER | A bejelentő felhasználó azonosítója (foreign key `felhasznalok.id`).           |
 | `terem`          | TEXT    | Terem megnevezése (szöveg).                                                    |
 | `leiras`         | TEXT    | Hiba rövid leírása.                                                            |
-| `allapot`        | TEXT    | `bejelentve` vagy `kijavitva`.                                                 |
+| `allapot`        | TEXT    | `bejelentve` vagy `kijavítva`.                                                 |
 | `javito_id`      | INTEGER | Karbantartó azonosítója (`felhasznalok.id`), ha javítva van. NULL, ha még nem. |
 | `javitas_datuma` | TEXT    | Javítás dátuma ISO formátumban. NULL, ha még nem javították.                   |
 
@@ -49,7 +49,7 @@
       jelszo TEXT NOT NULL,
       szerep TEXT NOT NULL
     );
-    
+
     -- Hibabejelentések tábla
     CREATE TABLE hibak (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -64,18 +64,19 @@
       FOREIGN KEY (javito_id) REFERENCES felhasznalok(id)
     );
 
-* * 
+
 
 ## Tesztadatok
 
 ### **1️⃣ Felhasználók (`felhasznalok`)**
 
     INSERT INTO felhasznalok (nev, felhasznalonev, jelszo, szerep) VALUES
-      ('Admin, 'admin', '$2b$10$g/TzyDNKvf1jkQWr5dVwZ.0ieBAIXALgKa31A7IA4Xtomi7m4ZC1G', 'admin'),
-      ('Kiss Péter', 'kissp', '$2b$10$A8y5my3gqHwIXaxs4ryt8eZeBxWeD1Qc2G/VrKQgIIeng5ByRcTpG', 'tanar'),
-      ('Nagy Anna', 'nagya', '$2b$10$SGUiT22WyyPv8CuQ4ed/QOzWqtDlDdYWRPHoBGOUGXtqEnGpC5g8i', 'tanar'),
-      ('Szabó Béla', 'szabob', '$2b$10$.BDU2ItscPaZ3vlkK8Rw1eemnqaMIUbo.xJ9sHSlx1takeGxpAyYu', 'karbantarto'),
-      ('Tóth Károly', 'tothk', '$2b$10$gVPZD2F.4A4knDzo8ySoJuOBRBdxi4dxFn3M2K1CsQ6fMXZqQPYom', 'karbantarto');
+    ('Admin', 'admin', '$2b$10$D.nfa/055qYTIVjNAhqFEeTnVS6rcXJRVCArjIn3XNMvb7PjnHN7u', 'admin'),
+    ('Kiss Péter', 'kissp', '$2b$10$65zLhi8AuHynWshFrdX1hO.uxe.diUVWKYn41uLsNbon0UGJkzVDq', 'tanar'),
+    ('Nagy Anna', 'nagya', '$2b$10$2neLOnOzv9Q8ukcSd0uUIuPTVz6reafP0QrhFhUOMTrm838Tyyme6', 'tanar'),
+    ('Szabó Béla', 'szabob', '$2b$10$SPpHXOTCu8JzkfQ2KO8m1ukuRWKEPo3vwqkPZUs9IqTRK9rWu6pYi', 'karbantarto'),
+    ('Tóth Károly', 'tothk', '$2b$10$aa0hZFBPQWa6p65QJNMg../YKNoAMLr1IS3zT4kgb1BBF.bk14U82', 'karbantarto');
+
 
 (A hash-elt jelszavakat a hash.js program futtatásával állítottuk elő.)
 
@@ -83,12 +84,13 @@
 
 ### **2️⃣ Hibák (`hibak`)**
 
-    INSERT INTO hibak (datum, bejelento_id, terem, leiras, allapot, javito_id, javitas_datuma) VALUES
-      ('2025-06-01', 1, '101-es terem', 'Eltört egy szék.', 'bejelentve', NULL, NULL),
-      ('2025-06-01', 2, 'Folyosó', 'A folyosón nem ég a lámpa.', 'bejelentve', NULL, NULL),
-      ('2025-05-30', 1, '201-es terem', 'A projektor nem működik.', 'kijavítva', 3, '2025-05-31'),
-      ('2025-05-28', 2, 'Tanári', 'Csöpög a csap.', 'kijavítva', 4, '2025-05-29'),
-      ('2025-06-02', 1, 'Könyvtár', 'Eltört polc.', 'bejelentve', NULL, NULL);
+      INSERT INTO hibak (datum, bejelento_id, terem, leiras, allapot, javito_id, javitas_datuma) VALUES
+      ('2025-06-01', 1, '101-es terem', 'A tantermi számítógép nem indul el, a tápegység kattog bekapcsoláskor.', 'bejelentve', NULL, NULL),
+      ('2025-06-01', 2, 'Informatika terem', 'Az iskolai Wi-Fi hálózat folyamatosan megszakad, a diákok nem tudnak csatlakozni az e-napló rendszerhez.', 'bejelentve', NULL, NULL),
+      ('2025-05-30', 1, '201-es terem', 'Az interaktív tábla szoftvere lefagyott frissítés közben, nem lehet újraindítani.', 'kijavítva', 4, '2025-05-31'),
+      ('2025-05-28', 2, 'Tanári', 'A hálózati nyomtató nem érhető el a tanári gépekről, a nyomtatási sor megtelik és nem ürül.', 'kijavítva', 5, '2025-05-29'),
+      ('2025-06-02', 1, 'Könyvtár', 'A könyvtári kölcsönző rendszer adatbázisa hibát jelez, az új könyvek bevitele nem lehetséges.', 'bejelentve', NULL, NULL);
+
 
 * * *
 

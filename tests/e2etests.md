@@ -2,7 +2,7 @@
 
 * **Teszteset LT-01: Sikeres bejelentkezés tanárként**
   
-  * **Cél:** Ellenőrizni, hogy egy érvényes tanári fiókkal be lehet-e jelentkezni.
+  * **Cél:** Ellenőrizni, hogy egy érvényes tanári fiókkal be lehet-e jelentkezni.
   * **Előfeltételek:** Az alkalmazás fut. Létezik egy tanári felhasználói fiók (pl. `kissp`/`kissp`).
   * **Lépések:**
     1. Nyisd meg az alkalmazás bejelentkezési oldalát (`index.html`).
@@ -199,7 +199,7 @@
     3. Töltsd ki a "Jelszó" mezőt (pl. "Jelszo123").
     4. Válaszd ki a "Szerepkör" legördülő listából a "tanar" opciót.
     5. Kattints a "Felhasználó hozzáadása" gombra.
-  * **Várt Eredmény:** Az űrlap kiürül. A "Meglévő felhasználók" táblázat frissül, és az új felhasználó ("Teszt Elek", "tesztelek", "tanar") megjelenik a listában. Egy sikeres létrehozásról szóló üzenet jelenik meg (pl. alert).
+  * **Várt Eredmény:** Az űrlap kiürül. A "Meglévő felhasználók" táblázat frissül, és az új felhasználó ("Teszt Elek", "tesztelek", "tanar") megjelenik a listában.
 
 * **Teszteset UM-03: Felhasználó törlése adminisztrátorként**
   * **Cél:** Ellenőrizni egy felhasználó sikeres törlését.
@@ -208,8 +208,7 @@
     1. Keresd meg a "tesztelek" felhasználót a "Meglévő felhasználók" táblázatban.
     2. Kattints a felhasználó sorában található "Törlés" gombra.
     3. A megjelenő megerősítő kérdésre kattints az "OK" gombra.
-  * **Várt Eredmény:** A "Meglévő felhasználók" táblázat frissül, és a "tesztelek" felhasználó eltűnik a listából. Egy sikeres törlésről szóló üzenet jelenik meg.
-
+  * **Várt Eredmény:** A "Meglévő felhasználók" táblázat frissül, és a "tesztelek" felhasználó eltűnik a listából.
 * **Teszteset UM-04: Adminisztrátor saját magát próbálja törölni (sikertelen)**
   * **Cél:** Ellenőrizni, hogy az adminisztrátor nem tudja törölni saját magát.
   * **Előfeltételek:** A felhasználó adminisztrátorként (`admin`) az `admin_users.html` oldalon van.

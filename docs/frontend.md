@@ -1,5 +1,6 @@
 Frontend fejlesztői dokumentáció
---------------------------------
+-----------------------------    - Meghívja a `loadUserProfile()`-t a felhasználói adatok betöltéséhez.
+    - Sikeres profilbetöltés után meghívja a `fetchAllUsers()`-t (minden felhasználó nevének lekérdezéséhez, hogy a hibák listájában a bejelentő és javító neve megjeleníthető legyen) és a `loadFaults()`-t a hibabejelentések betöltéséhez.-
 
 ## Tartalomjegyzék
 
@@ -178,8 +179,8 @@ A frontend alkalmazás tesztelése manuális végponttól végpontig (End-to-End
 
 #### Tesztadatok előkészítése
 
-A teszteléshez szükséges alap felhasználói és hibajegy adatokat a projekt gyökérkönyvtárában található `tesztadatok.sql` fájl tartalmazza. A tesztadatbázis létrehozásához és feltöltéséhez futtasd a következő parancsot a projekt gyökérkönyvtárából:
-`sqlite3 hibabejelento.db < tesztadatok.sql`
+A teszteléshez szükséges alap felhasználói és hibajegy adatokat a `tests/tesztadatok.sql` fájl tartalmazza. A tesztadatbázis létrehozásához és feltöltéséhez futtasd a következő parancsot a projekt gyökérkönyvtárából:
+`sqlite3 hibabejelento.db < tests/tesztadatok.sql`
 
 A részletes tesztesetek, beleértve a lépéseket és a várt eredményeket, a `tests/e2etests.md` fájlban találhatók.
 

@@ -1,12 +1,12 @@
 # Hibabejelentő
 
-## Vizsgaremek (2025. május)
+## Vizsgaremek (2026. május)
 
-Iskolánk portáján van egy füzet. Ebbe írják be a tanárok az iskolában észlelt hibákat, amelyeket utána a karbantartók kijavítanak.
+Iskolánk számára készítettünk egy hálózati hibabejelentő rendszert. Ebben a felületen a tanárok rögzíthetik az iskolában tapasztalt hálózati vagy rendszerszintű hibákat, amelyeket ezt követően a rendszergazda javít.
 
-A projekt célja a portán lévő füzet kiváltása egy webes felületű hibabejelentő és -nyilvántartó rendszerrel, amely számítógépről és mobilról egyaránt elérhető.
+A projekt célja egy olyan webes hibabejelentő és hibanyilvántartó rendszer létrehozása, amely számítógépről és mobilról is könnyen elérhető. 
 
-Az adatokat egy adatbázisban kell tárolni, amelyet egy API-n keresztül lehet elérni. Az elkészített alkalmazás erről az API-ról tölti le és jeleníti meg az adatokat.
+Az adatok egy adatbázisban kerülnek tárolásra, amelyhez egy API-n keresztül lehet hozzáférni. Az elkészült alkalmazás ezen az API-n keresztül tölti le és jeleníti meg a szükséges információkat.
 
 * * *
 
@@ -33,14 +33,14 @@ Az adatokat egy adatbázisban kell tárolni, amelyet egy API-n keresztül lehet 
 
 4. Telepítsd a függőségeket: `npm install`
 
-5. Hozz létre felhasználókat az adatbázisban. Ezt  alegegyszerűbbe a `tesztadatok.sql` fájlban lévő parancsok futtatásával tudod megtenni:
+5. Hozz létre felhasználókat az adatbázisban. Ezt a legegyszerűbben a `tesztadatok.sql` fájlban lévő parancsok futtatásával tudod megtenni:
    `sqlite3 hibabejelento.db < tests/tesztadatok.sql`
    A tesztadatokban nem csak felhasználók vannak, hanem néhány bejelentett/kijavított hiba is a teszteléshez.
 
 ### Indítás
 
 * A szerver indítása: `npm start` vagy `node server.js`
-* Az alkalmazás elérhető lesz a `http://localhost:5000` címen.
+* Az alkalmazás elérhető lesz a `http://localhost:3000` címen.
 
 ## Dokumentáció
 

@@ -2,7 +2,7 @@
 
 ### **1. Az alkalmazás célja**
 
-Az iskola portáján lévő füzetet kiváltó digitális hibabejelentő és -nyilvántartó rendszer készítése. A felhasználók bejelenthetik a hibákat, a karbantartók pedig jelezhetik a hibák javítását benne. A rendszer webes felületű, számítógépről és mobilról egyaránt elérhető.
+Egy digitális hibabejelentő és hibanyilvántartó rendszer fejlesztése, amelyben a felhasználók rögzíthetik a felmerülő problémákat, a karbantartók pedig visszajelezhetik a javítások elvégzését. A rendszer webes felületű, és számítógépről valamint mobilról is könnyen elérhető.
 
 * * *
 

@@ -135,7 +135,7 @@ A sikeres bejelentkezés után kapott tokent minden védett kérés `Authorizati
 - **Sikeres válasz (201 Created):**
 
     ```json
-    { "id": 7, "nev": "Új Teszt Felhasználó", "felhasznalonev": "ujteszt", "szerep": "tanar" }
+    { "id": 6, "nev": "Új Teszt Felhasználó", "felhasznalonev": "ujteszt", "szerep": "tanar" }
     ```
 
 - **Hiba válaszok:**
@@ -174,10 +174,10 @@ A sikeres bejelentkezés után kapott tokent minden védett kérés `Authorizati
     [
       {
         "id": 1,
-        "datum": "2023-10-26",
-        "bejelento_id": 2,
+        "datum": "2025-06-01",
+        "bejelento_id": 1,
         "terem": "101-es terem",
-        "leiras": "Projektor nem működik",
+        "leiras": "A tantermi számítógép nem indul el, a tápegység kattog bekapcsoláskor.",
         "allapot": "bejelentve",
         "javito_id": null,
         "javitas_datuma": null
@@ -196,8 +196,8 @@ A sikeres bejelentkezés után kapott tokent minden védett kérés `Authorizati
 
     ```json
     {
-      "terem": "Folyosó A",
-      "leiras": "Kiégett egy villanykörte"
+      "terem": "Könyvtár",
+      "leiras": "A könyvtári kölcsönző rendszer adatbázisa hibát jelez, az új könyvek bevitele nem lehetséges."
     }
     ```
 
