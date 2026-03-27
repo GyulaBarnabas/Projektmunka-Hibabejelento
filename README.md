@@ -48,4 +48,4 @@ Az adatok egy adatbázisban kerülnek tárolásra, amelyhez egy API-n keresztül
 
 ## Tesztelés
 
-* A manuális teszteket a [tests mappában](tests) találod.
+* A manuális teszteket a [tests mappában](tests) találhatja.
