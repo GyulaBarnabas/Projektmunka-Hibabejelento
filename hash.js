@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 
 async function hashPassword(plainPassword) {
-  const saltRounds = 10; // a kérésed szerint
+  const saltRounds = 10; 
   try {
     const hashedPassword = await bcrypt.hash(plainPassword, saltRounds);
     console.log('Hash-elt jelszó:', hashedPassword);

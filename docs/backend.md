@@ -260,12 +260,12 @@ Minden teszteset a `.http` fájlban tartalmazza a várt HTTP státuszkódot és 
 
 ### 6.1. Tesztadatok előkészítése
 
-A teszteléshez és a fejlesztéshez szükséges alap adatbázis séma és kezdeti adatok a projekt gyökérkönyvtárában található `tesztadatok.sql` fájlban definiáltak.
+A teszteléshez és a fejlesztéshez szükséges alap adatbázis séma és kezdeti adatok a `tests/tesztadatok.sql` fájlban definiáltak.
 
 Az adatbázis (alapértelmezetten `hibabejelento.db`) létrehozásához és a tesztadatokkal való feltöltéséhez futtasd a következő parancsot a projekt gyökérkönyvtárából (feltéve, hogy az SQLite CLI telepítve van és elérhető a PATH-ban):
 
 ```bash
-sqlite3 hibabejelento.db < tesztadatok.sql
+sqlite3 hibabejelento.db < tests/tesztadatok.sql
 ```
 
 Ez a parancs létrehozza (ha nem létezik) a `hibabejelento.db` fájlt, végrehajtja a `tesztadatok.sql`-ben lévő `CREATE TABLE` utasításokat, majd feltölti a táblákat az `INSERT INTO` utasításokkal. A `server.js` indításkor szintén ellenőrzi és létrehozza a táblákat, ha azok nem léteznek, de a tesztadatokat az SQL szkript tölti fel.

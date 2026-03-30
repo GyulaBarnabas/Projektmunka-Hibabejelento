@@ -1,6 +1,4 @@
 Frontend fejlesztői dokumentáció
------------------------------    - Meghívja a `loadUserProfile()`-t a felhasználói adatok betöltéséhez.
-    - Sikeres profilbetöltés után meghívja a `fetchAllUsers()`-t (minden felhasználó nevének lekérdezéséhez, hogy a hibák listájában a bejelentő és javító neve megjeleníthető legyen) és a `loadFaults()`-t a hibabejelentések betöltéséhez.-
 
 ## Tartalomjegyzék
 
@@ -63,7 +61,7 @@ A frontend négy fő részből áll:
   - **`DOMContentLoaded` esemény:**
     - Ellenőrzi az `authToken` meglétét a `sessionStorage`-ben. Ha nincs, átirányít az `index.html`-re.
     - Meghívja a `loadUserProfile()`-t a felhasználói adatok betöltéséhez.
-    - Sikeres profilbetöltés után meghívja a `fetchAllUsers()`-t (ha a felhasználó admin, hogy minden felhasználó nevét ismerje a hibák listázásánál) és a `loadFaults()`-t a hibabejelentések betöltéséhez.
+    - Sikeres profilbetöltés után meghívja a `fetchAllUsers()`-t (minden felhasználó felhasználónevének lekérdezéséhez, hogy a hibák listájában a bejelentő és javító felhasználóneve megjeleníthető legyen) és a `loadFaults()`-t a hibabejelentések betöltéséhez.
     - Eseménykezelőket rendel a kijelentkezés (`logoutButton`), új hiba mentése (`newFaultForm`) és állapot szerinti szűrés (`filterStatus`) elemekhez.
   - **`handleLogout()`**:
     - Törli az `authToken`-t a `sessionStorage`-ből.
@@ -78,8 +76,7 @@ A frontend négy fő részből áll:
     - Sikertelen válasz (pl. 401, 403) esetén kijelentkezteti a felhasználót (`handleLogout()`).
   - **`fetchAllUsers()`**:
     - GET kérést küld az `/api/felhasznalok` végpontra.
-    - Sikeres válasz esetén feltölti az `allUsersMap`-et a felhasználói ID-felhasználónév párokkal. Ez azért szükséges, hogy a hibák listájában a bejelentő és javító ID-k helyett a nevük jelenhessen meg.
-    - _Megjegyzés:_ A `server.js` jelenlegi implementációja szerint ez a végpont minden hitelesített felhasználó számára elérhető, de a frontend logikája alapján elsősorban az adminok számára releváns a teljes lista a nevek megjelenítéséhez. Más felhasználók esetén is lefut, de lehet, hogy nem használják fel az összes adatot.
+    - Sikeres válasz esetén feltölti az `allUsersMap`-et a felhasználói ID–felhasználónév (`felhasznalonev`) párokkal. Ez azért szükséges, hogy a hibák listájában a bejelentő és javító ID-k helyett a felhasználónevük jelenhessen meg.
   - **`loadFaults(statusFilter = '')`**:
     - GET kérést küld az `/api/hibak` végpontra.
     - Ha a `statusFilter` paraméter meg van adva (pl. 'bejelentve', 'kijavítva'), akkor azt query paraméterként (`?allapot=...`) hozzáfűzi az URL-hez.
@@ -90,17 +87,16 @@ A frontend négy fő részből áll:
     - Ha nincsenek hibák, egy megfelelő üzenetet jelenít meg.
     - Minden egyes `fault` objektumhoz:
       - Létrehoz egy új sort a táblázatban.
-      - Kitölti a cellákat a hiba adataival (dátum, terem, leírás, állapot, bejelentő neve, javító neve, javítás dátuma).
-      - Az állapotot egy Bootstrap badge segítségével jeleníti meg (`bg-warning` vagy `bg-success`).
-      - A bejelentő és javító nevét az `allUsersMap` alapján próbálja megkeresni. Ha nem található, az ID-t jeleníti meg.
+      - Kitölti a cellákat a hiba adataival (dátum, terem, leírás, állapot, bejelentő felhasználóneve, javító felhasználóneve, javítás dátuma).
+      - Az állapotot egy Bootstrap badge segítségével jeleníti meg (`bg-warning` vagy `bg-success`).
+      - A bejelentő és javító felhasználónevét az `allUsersMap` alapján próbálja megkeresni. Ha nem található, az ID-t jeleníti meg.
       - Ha a hiba állapota 'bejelentve' és a felhasználó 'admin' vagy 'karbantarto', akkor egy "Javítás" gombot ad a "Műveletek" oszlophoz, amely a `handleMarkAsFixed(fault.id)` függvényt hívja meg.
   - **`handleNewFaultSubmit(event)`**:
     - Megakadályozza az űrlap alapértelmezett beküldését.
     - Kiolvassa a termet és a leírást az űrlap mezőiből.
     - POST kérést küld az `/api/hibak` végpontra az új hiba adataival.
     - Sikeres válasz (HTTP 201) esetén:
-      - Bezárja az új hiba modális ablakot.
-      - Újratölti a hibák listáját (`loadFaults()`), az űrlap látható marad.
+      - Újratölti a hibák listáját (`loadFaults()`).
       - Kiüríti az űrlapot.
     - Sikertelen válasz esetén hibaüzenetet jelenít meg a `newFaultError` div-ben.
   - **`handleMarkAsFixed(faultId)`**:
