@@ -35,6 +35,7 @@ function handleLogout() {
     window.location.replace('index.html');
 }
 
+
 async function loadUserProfile() {
     const token = sessionStorage.getItem('authToken');
     if (!token) return; // Ezt a DOMContentLoaded már ellenőrzi, de biztonsági okokból itt is maradhat

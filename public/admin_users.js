@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         return;
     }
 
+    
     await loadUserProfile();
 
     if (currentUserProfile && currentUserProfile.szerep === 'admin') {

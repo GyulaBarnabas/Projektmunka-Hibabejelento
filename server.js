@@ -25,6 +25,7 @@ try {
   process.exit(1); // Kilépés, ha az adatbázis nem elérhető
 }
 
+
 // Adatbázis séma inicializálása (ha még nem létezik)
 function initializeDb() {
   try {
