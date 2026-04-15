@@ -19,7 +19,9 @@ body {
 
 .btn-outline-secondary {
   border-left-style: none;
-  border-top-style: solid 1px lightgray;
+  border-top: solid 1px rgb(223, 227, 230);
+  border-right: solid 1px rgb(223, 227, 230);
+  border-bottom: solid 1px rgb(223, 227, 230);;
 }
 
 .btn-outline-secondary:hover {
