@@ -40,3 +40,18 @@ async function handleLogin(event) {
         loginErrorDiv.textContent = 'Hálózati hiba történt.';
     }
 }
+
+//the below code is for the button to toggle between password and text
+const togglePassword = document.querySelector('#togglePassword');
+const passwordInput = document.querySelector('#jelszo');
+const eyeIcon = document.querySelector('#eyeIcon');
+
+togglePassword.addEventListener('click', function () {
+    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordInput.setAttribute('type', type);
+    if (type === 'password') {
+        eyeIcon.src = 'img/show.png';
+    } else {
+        eyeIcon.src = 'img/hide.png';
+    }
+});

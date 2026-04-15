@@ -16,3 +16,20 @@ body {
     padding-right: 15px; /* Csökkentett jobb oldali belső margó (gutter) */
   }
 }
+
+.btn-outline-secondary {
+  border-left-style: none;
+  border-top-style: solid 1px lightgray;
+}
+
+.btn-outline-secondary:hover {
+  background-color: lightgray;
+}
+
+.btn-outline-secondary:active {
+  background-color: lightgray;
+}
+
+.no-right-border {
+  border-right-style: none;
+}

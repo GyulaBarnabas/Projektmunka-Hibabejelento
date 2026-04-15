@@ -26,7 +26,12 @@
               </div>
               <div class="mb-3">
                 <label for="jelszo" class="form-label">Jelszó:</label>
-                <input type="password" class="form-control" id="jelszo" required>
+                <div class="input-group">
+                  <input type="password" class="form-control no-right-border" id="jelszo" required>
+                  <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                      <img src="img/show.png" id="eyeIcon" width="20" alt="Toggle Password">
+                      </button>
+                  </div>
               </div>
               <button type="submit" class="btn btn-primary w-100">Bejelentkezés</button>
               <div id="loginError" class="text-danger mt-2"></div>
