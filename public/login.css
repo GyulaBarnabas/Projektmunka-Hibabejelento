@@ -1,0 +1,19 @@
+.btn-outline-secondary {
+  border-left-style: none;
+  border-top: solid 1px rgb(223, 227, 230);
+  border-right: solid 1px rgb(223, 227, 230);
+  border-bottom: solid 1px rgb(223, 227, 230);;
+}
+
+.btn-outline-secondary:hover {
+  background-color: lightgray;
+}
+
+.btn-outline-secondary:active {
+  background-color: lightgray;
+}
+
+.no-right-border {
+  border-right-style: none;
+}
+
