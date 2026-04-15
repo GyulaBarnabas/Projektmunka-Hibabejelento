@@ -1,3 +1,8 @@
+body {
+    background: #071F65;
+    background: linear-gradient(90deg, rgba(7, 31, 101, 1) 0%, rgba(62, 93, 189, 1) 100%);
+}
+
 .btn-outline-secondary {
   border-left-style: none;
   border-top: solid 1px rgb(223, 227, 230);

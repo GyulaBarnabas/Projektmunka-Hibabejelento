@@ -1,8 +1,7 @@
 /* style.css */
 body {
     font-family: sans-serif;
-    background: #071F65;
-    background: linear-gradient(90deg, rgba(7, 31, 101, 1) 0%, rgba(62, 93, 189, 1) 100%);
+    background-color: beige;
 }
 
 .navbar-text {
