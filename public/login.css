@@ -36,9 +36,19 @@ body {
 
 .card-header {
     border-bottom-style: none;
+    padding-top: 2rem !important;
 }
 
 .card h2 {
     font-size: 3.5rem;
     text-align: center;
+}
+
+.card-body {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+
+.btn[type="submit"] {
+    margin-top: 1rem;
 }
