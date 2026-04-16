@@ -14,7 +14,7 @@ Az adatok egy adatbázisban kerülnek tárolásra, amelyhez egy API-n keresztül
 
 ### Szükséges szoftverek
 
-* Node.js (LTS verzió ajánlott)
+* Node.js v22.22.2 LTS verzió
 * npm (Node.js-sel együtt települ)
 
 ### Konfiguráció
