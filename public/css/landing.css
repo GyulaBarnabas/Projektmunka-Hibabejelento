@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Suranna&display=swap');
+
+.landing-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
+                      url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000');
+    background-size: cover;
+    background-position: center;
+}
+
+.landing-main h1 {
+    font-family: 'Suranna', serif;
+    font-size: clamp(3.5rem, 15vw, 9rem); 
+    color: #000;
+    margin: 0;
+    line-height: 0.9;
+    letter-spacing: -2px;
+}
+
+.btn-signin {
+    margin-top: 50px;
+    background-color: #0a266e;
+    color: white;
+    padding: 15px 45px;
+    border-radius: 12px;
+    font-size: 1.8rem;
+    text-decoration: none;
+    border: 2px solid #000;
+    box-shadow: 2px 4px 0px rgba(0,0,0,0.2); 
+}
+
+.btn-signin:hover {
+    background-color: #1e3a8a;
+}
+
+@media (max-width: 768px) {
+    .landing-main {
+        padding: 20px;
+    }
+    .btn-signin {
+        margin-top: 40px;
+        padding: 10px 40px;
+        font-size: 1.4rem;
+        width: 80%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    header, footer {
+        padding: 10px 15px;
+    }
+    
+    header {
+        font-size: 0.8rem;
+    }
+}

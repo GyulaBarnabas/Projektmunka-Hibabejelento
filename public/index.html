@@ -1,55 +1,29 @@
 <!DOCTYPE html>
 <html lang="hu">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bejelentkezés - Hibabejelentő</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/login.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hibabejelentő</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/landing.css">
 </head>
-
-<!-- 
-  I hate boostraps classes so much 
-  I'd rather do this shit on my own than use this but oh well
-  More tech to add to the powerpoint.
--->
-
 <body>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-8 col-lg-6 col-xl-5">
-        <div class="card">
-          <div class="card-header text-center pt-3">
-            <h2>Hibabejelentő</h2>
-          </div>
-          <div class="card-body p-5">
-            <form id="loginForm">
-              <div class="mb-3">
-                <label for="felhasznalonev" class="form-label">Felhasználónév:</label>
-                <input type="text" class="form-control" id="felhasznalonev" required autofocus>
-              </div>
-              <div class="mb-3">
-                <label for="jelszo" class="form-label">Jelszó:</label>
-                <div class="input-group">
-                  <input type="password" class="form-control no-right-border" id="jelszo" required>
-                  <button class="btn btn-outline-secondary" type="button" id="togglePassword">
-                      <img src="img/show.png" id="eyeIcon" width="20" alt="Toggle Password">
-                      </button>
-                  </div>
-              </div>
-              <button type="submit" class="btn btn-primary w-100">Bejelentkezés</button>
-              <div id="loginError" class="text-danger mt-2"></div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/login.js"></script>
+    <header>
+        <div class="logo">BugsBegone</div>
+        <a href="help.html" target="_blank">F.A.Q.</a>
+    </header>
+
+    <main class="landing-main">
+        <h1>Hibád van?</h1>
+        <h1>Segítünk!</h1>
+        
+        <a href="login.html" class="btn-signin">bejelentkezés</a>
+    </main>
+
+    <footer>
+        <div>Minden jog fenntartva BugsBegone© 2026</div>
+    </footer>
+
 </body>
-
 </html>

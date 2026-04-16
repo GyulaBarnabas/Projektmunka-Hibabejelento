@@ -1,11 +1,38 @@
-/* style.css */
-body {
-    font-family: sans-serif;
-    background-color: beige;
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.navbar-text {
-    color: rgba(255, 255, 255, 0.75) !important; /* Bootstrap felülírása, ha szükséges */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Sora', sans-serif;
+    background-color: white;
+}
+header, footer {
+    background: linear-gradient(90deg, rgba(7, 31, 101, 1) 0%, rgba(62, 93, 189, 1) 100%) !important;
+    color: white;
+    padding: 12px 40px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header a {
+    color: white;
+    text-decoration: underline;
+}
+
+footer {
+    text-align: center;
+    font-size: 0.9rem;
 }
 
 /* Kisebb margók mobil fekvő nézetben */
