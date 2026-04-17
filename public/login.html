@@ -10,19 +10,13 @@
   <link rel="stylesheet" href="css/login.css">
 </head>
 
-<!-- 
-  I hate boostraps classes so much 
-  I'd rather do this shit on my own than use this but oh well
-  More tech to add to the powerpoint.
--->
-
 <body>
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8 col-lg-6 col-xl-5">
         <div class="card">
           <div class="card-header text-center pt-3">
-            <h2>Hibabejelentő</h2>
+            <h1>Bejelentkezés</h1>
           </div>
           <div class="card-body p-5">
             <form id="loginForm">
@@ -33,13 +27,12 @@
               <div class="mb-3">
                 <label for="jelszo" class="form-label">Jelszó:</label>
                 <div class="input-group">
-                  <input type="password" class="form-control no-right-border" id="jelszo" required>
-                  <button class="btn btn-outline-secondary" type="button" id="togglePassword">
-                      <img src="img/show.png" id="eyeIcon" width="20" alt="Toggle Password">
-                      </button>
-                  </div>
-              </div>
-              <button type="submit" class="btn btn-primary w-100">Bejelentkezés</button>
+                  <input type="password" class="form-control" id="jelszo" required>
+                  <button class="btn border" type="button" id="togglePassword">
+                      <img src="img/show.png" id="eyeIcon" width="22" alt="Show">
+                  </button>
+                </div>
+              <button type="submit" class="btn btn-primary w-100">Belépés</button>
               <div id="loginError" class="text-danger mt-2"></div>
             </form>
           </div>
