@@ -1,12 +1,21 @@
 // login.js
 const API_BASE_URL = 'http://localhost:3000/api';
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     const token = sessionStorage.getItem('authToken');
-    // Ha van token, és a login oldalon vagyunk, átirányítunk a főoldalra
     if (token) {
-        window.location.href = 'main.html';
-        return;
+        try {
+            const profileRes = await fetch(`${API_BASE_URL}/profil`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            if (profileRes.ok) {
+                const user = await profileRes.json();
+                redirectByUserRole(user.szerep);
+                return;
+            }
+        } catch (error) {
+            sessionStorage.removeItem('authToken');
+        }
     }
 
     const loginForm = document.getElementById('loginForm');
@@ -14,6 +23,16 @@ document.addEventListener('DOMContentLoaded', () => {
         loginForm.addEventListener('submit', handleLogin);
     }
 });
+
+function redirectByUserRole(role) {
+    if (role === 'admin') {
+        window.location.href = 'admin_users.html';
+    } else if (role === 'karbantarto') {
+        window.location.href = 'maintenance.html';
+    } else {
+        window.location.href = 'main.html';
+    }
+}
 
 async function handleLogin(event) {
     event.preventDefault();
@@ -33,17 +52,14 @@ async function handleLogin(event) {
 
         if (response.ok) {
             sessionStorage.setItem('authToken', data.token);
+            
             const profileRes = await fetch(`${API_BASE_URL}/profil`, {
                 headers: { 'Authorization': `Bearer ${data.token}` }
             });
 
             if (profileRes.ok) {
                 const user = await profileRes.json();
-                if (user.szerep === 'karbantarto') {
-                    window.location.href = 'maintenance.html';
-                } else {
-                    window.location.href = 'main.html';
-                }
+                redirectByUserRole(user.szerep);
             }
         } else {
             loginErrorDiv.textContent = data.error || 'Sikertelen bejelentkezés.';
