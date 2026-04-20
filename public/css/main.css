@@ -29,7 +29,7 @@
 }
 
 .btn-logout {
-    background-color: crimson;
+    background-color: darkred;
     padding: 5px 10px;
     color: white;
     border-style: none;
@@ -37,7 +37,7 @@
 }
 
 .btn-logout:hover {
-    background-color: darkred;
+    background-color: crimson;
 }
 
 .form-control {
