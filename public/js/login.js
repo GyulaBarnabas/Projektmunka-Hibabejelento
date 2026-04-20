@@ -28,10 +28,23 @@ async function handleLogin(event) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ felhasznalonev, jelszo })
         });
+
         const data = await response.json();
+
         if (response.ok) {
             sessionStorage.setItem('authToken', data.token);
-            window.location.href = 'main.html';
+            const profileRes = await fetch(`${API_BASE_URL}/profil`, {
+                headers: { 'Authorization': `Bearer ${data.token}` }
+            });
+
+            if (profileRes.ok) {
+                const user = await profileRes.json();
+                if (user.szerep === 'karbantarto') {
+                    window.location.href = 'maintenance.html';
+                } else {
+                    window.location.href = 'main.html';
+                }
+            }
         } else {
             loginErrorDiv.textContent = data.error || 'Sikertelen bejelentkezés.';
         }
