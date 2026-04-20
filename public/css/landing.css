@@ -15,7 +15,7 @@
 }
 
 .landing-main h1 {
-    font-size: 13rem;
+    font-size: clamp(6rem, 12vw, 10rem);
     font-weight: 400;
     color: #000;
     margin: 0;

@@ -1,129 +1,127 @@
 body {
-    background: linear-gradient(90deg, rgba(7, 31, 101, 1) 0%, rgba(62, 93, 189, 1) 100%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    padding: 20px;
+  background: linear-gradient(90deg, rgba(7, 31, 101, 1) 0%, rgba(62, 93, 189, 1) 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
 }
 
-.container {
-  width: 100%;
-  transform: translateY(-8vh);
+.container {  width: 100%;  transform: translateY(-8vh);
 }
 
 .card {
-    width: 100%;
-    max-width: 850px;
-    padding: 2rem 2rem 1rem;
-    border-radius: 30px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    background-color: #fff;
+  width: 100%;
+  max-width: 850px;
+  padding: 2rem 2rem 1rem;
+  border-radius: 30px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
 }
 
 .card-header {
-    background-color: transparent;
-    border-bottom: none;
-    padding: 0 !important;
+  background-color: transparent;
+  border-bottom: none;
+  padding: 0 !important;
 }
 
 .card h1 {
-    color: black !important;
-    font-size: clamp(2.5rem, 8vw, 3rem);
-    font-weight: 500;
-    text-align: center;
-    margin-bottom: 2.5rem;
-    line-height: 1;
+  color: black !important;
+  font-size: clamp(2.5rem, 8vw, 3rem);
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  line-height: 1;
 }
 
 .card-body {
-    padding: 0 !important;
+  padding: 0 !important;
 }
 
 .form-label {
-    font-size: 1.2rem;
-    font-weight: 500;
-    margin-bottom: 0.8rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 0.8rem;
 }
 
 .form-control {
-    padding: 0.75rem;
-    border: 1px solid #ced4da;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  padding: 0.75rem;
+  border: 1px solid #ced4da;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .form-control:focus {
-    border-color: #071F65;
-    box-shadow: 0 0 0 0.25rem rgba(7, 31, 101, 0.1);
+  border-color: #071F65;
+  box-shadow: 0 0 0 0.25rem rgba(7, 31, 101, 0.1);
 }
 
 #togglePassword img {
-    width: 27px;
-    opacity: 0.2;
-    transition: opacity 0.2s ease-in-out;
+  width: 27px;
+  opacity: 0.2;
+  transition: opacity 0.2s ease-in-out;
 }
 
 #togglePassword img:hover {
-  opacity: 0.2;
+opacity: 0.2;
 }
 
 .input-group:focus-within #togglePassword img {
-  opacity: 1;
+opacity: 1;
 }
 
 .input-group {
-    border: 1px solid #ced4da;
-    border-radius: 8px;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+border: 1px solid #ced4da;
+border-radius: 8px;
+transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .input-group:focus-within {
-    border-color: #071F65;
-    box-shadow: 0 0 0 0.25rem rgba(7, 31, 101, 0.1);
+border-color: #071F65;
+box-shadow: 0 0 0 0.25rem rgba(7, 31, 101, 0.1);
 }
 
 .input-group .form-control {
-    border: none !important;
-    box-shadow: none !important;
+border: none !important;
+box-shadow: none !important;
 }
 
 #togglePassword {
-    background-color: transparent !important; 
-    border: none !important;
-    padding-right: 15px;
-    box-shadow: none !important;
+background-color: transparent !important; 
+border: none !important;
+padding-right: 15px;
+box-shadow: none !important;
 }
 
 #togglePassword:hover {
-    background-color: transparent;
-    opacity: 0.7;
+background-color: transparent;
+opacity: 0.7;
 }
 
 .btn-primary {
-    background-color: #071F65 !important;
-    border: none !important;
-    padding: 0.6rem;
-    font-size: 1.2rem;
-    font-weight: 600;
-    border-radius: 8px;
-    margin-top: 1.5rem;
-    transition: background-color 0.2s;
+  background-color: #071F65 !important;
+  border: none !important;
+  padding: 0.6rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+  transition: background-color 0.2s;
 }
 
 .btn-primary:hover {
-    background-color: #1e3a8a !important;
+  background-color: #1e3a8a !important;
 }
 
 .btn-outline-secondary:active {
-    background-color: lightgray;
+  background-color: lightgray;
 }
 
 @media (max-width: 576px) {
-    .card {
-        padding: 2.5rem 1.5rem;
-    }
-    .container {
-        transform: translateY(-5vh);
-    }
+  .card {
+    padding: 2.5rem 1.5rem;
+  }
+  .container {
+    transform: translateY(-5vh);
+  }
 }
