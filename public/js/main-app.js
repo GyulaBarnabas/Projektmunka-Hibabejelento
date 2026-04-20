@@ -125,6 +125,7 @@ async function loadFaults(statusFilter = '') {
     }
 }
 
+// Update in main-app.js
 function renderFaults(faults) {
     const tableBody = document.getElementById('faultsTableBody');
     tableBody.innerHTML = '';
@@ -136,13 +137,19 @@ function renderFaults(faults) {
 
     faults.forEach(fault => {
         const row = tableBody.insertRow();
+        
+        // Column 1: Terem (from database)
         row.insertCell().textContent = fault.terem;
+        
+        // Column 2: Leírás (Shortened for the "pretty" look)
         const shortDesc = fault.leiras.length > 30 ? fault.leiras.substring(0, 30) + "..." : fault.leiras;
         row.insertCell().textContent = shortDesc;
+        
+        // Column 3: Állapot (Hungarian logic)
         const statusCell = row.insertCell();
         const isBejelentve = fault.allapot === 'bejelentve';
         
-        const statusText = isBejelentve ? 'Folyamatban' : 'Kijavítva!';
+        const statusText = isBejelentve ? 'Bejelentve' : 'Kijavítva!';
         const statusClass = isBejelentve ? 'badge-progress' : 'badge-fixed';
         
         statusCell.innerHTML = `<span class="badge-custom ${statusClass}">${statusText}</span>`;

@@ -20,6 +20,26 @@
 .fw-300 { font-weight: 300 !important; }
 .fw-600 { font-weight: 600; }
 
+.gyik-link {
+    color: white;
+}
+
+.gyik-link:hover {
+    color: lightgrey;
+}
+
+.btn-logout {
+    background-color: crimson;
+    padding: 5px 10px;
+    color: white;
+    border-style: none;
+    border-radius: 10px;
+}
+
+.btn-logout:hover {
+    background-color: darkred;
+}
+
 .form-control {
     border: 1px solid #000;
     border-radius: 15px;
@@ -74,6 +94,42 @@
 .badge-progress { background-color: #FFFB5E; }
 .badge-fixed { background-color: #61FF5E; }
 
+.table-responsive {
+    max-height: 500px; /* Adjust this height to fit your desktop screen */
+    overflow-y: auto;  /* Vertical scrollbar when content overflows */
+    overflow-x: auto;  /* Horizontal scrollbar for mobile safety */
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Subtle inner border */
+}
+
+/* Custom Scrollbar Styling (The "Pretty" touch) */
+.table-responsive::-webkit-scrollbar {
+    width: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background: #071F65; /* Using your sweet blue hue */
+    border-radius: 10px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+    background: #3E5DBD;
+}
+
+/* Keep the table header fixed at the top while scrolling */
+.table thead th {
+    position: sticky;
+    top: 0;
+    background-color: #ffffff;
+    z-index: 1;
+    border-bottom: 2px solid #000;
+}
+
 footer {
     margin-top: auto;
 }
@@ -88,5 +144,9 @@ footer div {
         grid-template-columns: 350px 1fr;
         gap: 2.5rem;
         padding: 4rem 2rem; 
+    }
+
+    .table-responsive {
+        max-height: 400px;
     }
 }
