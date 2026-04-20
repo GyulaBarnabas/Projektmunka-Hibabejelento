@@ -11,7 +11,12 @@ body {
     display: flex;
     flex-direction: column;
     font-family: 'Sora', sans-serif;
-    background-color: white;
+    background-color: #f0f2f8; 
+    background-image: 
+        linear-gradient(rgba(7, 31, 101, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(7, 31, 101, 0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-attachment: fixed;
 }
 header, footer {
     background: linear-gradient(90deg, rgba(7, 31, 101, 1) 0%, rgba(62, 93, 189, 1) 100%) !important;
@@ -30,9 +35,45 @@ header a {
     text-decoration: underline;
 }
 
-footer {
-    text-align: center;
+header {
+    background-color: #071F65;
+    padding: 1.2rem 2rem; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    min-height: 70px;
+}
+
+.navbar-brand {
+    color: #ffffff !important;
+    font-size: 1.8rem; /* Matched to dashboard scale */
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    text-decoration: none;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+}
+
+.brand-heavy { font-weight: 800; }
+.brand-light { font-weight: 300; }
+
+.header-links a {
+    color: #ffffff;
+    text-decoration: underline;
+    margin-left: 20px;
+    font-weight: 500;
     font-size: 0.9rem;
+}
+
+footer {
+    background-color: #071F65;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 20px; 
+    font-size: 1.1rem;
+    width: 100%;
 }
 
 /* Kisebb margók mobil fekvő nézetben */

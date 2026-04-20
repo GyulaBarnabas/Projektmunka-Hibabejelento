@@ -130,31 +130,22 @@ function renderFaults(faults) {
     tableBody.innerHTML = '';
 
     if (!faults || faults.length === 0) {
-        tableBody.innerHTML = `<tr><td colspan="8" class="text-center">Nincsenek megjeleníthető hibák.</td></tr>`;
+        tableBody.innerHTML = `<tr><td colspan="3" class="text-center">Nincsenek megjeleníthető hibák.</td></tr>`;
         return;
     }
 
     faults.forEach(fault => {
         const row = tableBody.insertRow();
-        row.insertCell().textContent = fault.datum;
         row.insertCell().textContent = fault.terem;
-        row.insertCell().textContent = fault.leiras;
-        row.insertCell().innerHTML = `<span class="badge bg-${fault.allapot === 'bejelentve' ? 'warning' : 'success'}">${fault.allapot}</span>`;
-        row.insertCell().textContent = allUsersMap.get(fault.bejelento_id) || fault.bejelento_id;
-        row.insertCell().textContent = fault.javito_id ? (allUsersMap.get(fault.javito_id) || fault.javito_id) : '-';
-        row.insertCell().textContent = fault.javitas_datuma || '-';
-
-        const actionsCell = row.insertCell();
-        if (fault.allapot === 'bejelentve' && currentUserProfile &&
-            (currentUserProfile.szerep === 'admin' || currentUserProfile.szerep === 'karbantarto')) {
-            const markFixedButton = document.createElement('button');
-            markFixedButton.classList.add('btn', 'btn-sm', 'btn-secondary');
-            markFixedButton.textContent = 'Javítás';
-            markFixedButton.onclick = () => handleMarkAsFixed(fault.id);
-            actionsCell.appendChild(markFixedButton);
-        } else {
-            actionsCell.textContent = '-';
-        }
+        const shortDesc = fault.leiras.length > 30 ? fault.leiras.substring(0, 30) + "..." : fault.leiras;
+        row.insertCell().textContent = shortDesc;
+        const statusCell = row.insertCell();
+        const isBejelentve = fault.allapot === 'bejelentve';
+        
+        const statusText = isBejelentve ? 'Folyamatban' : 'Kijavítva!';
+        const statusClass = isBejelentve ? 'badge-progress' : 'badge-fixed';
+        
+        statusCell.innerHTML = `<span class="badge-custom ${statusClass}">${statusText}</span>`;
     });
 }
 
