@@ -1,0 +1,153 @@
+/* maintenance.css - Styling for the Maintenance Dashboard */
+
+/* --- Navbar & Branding (Matching main.css) --- */
+.navbar-custom {
+    background: linear-gradient(90deg, #071F65 0%, #3E5DBD 100%); 
+    padding: 1rem 2rem;
+    border-bottom: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand {
+    color: white !important;
+    font-size: 1.8rem;
+    line-height: 1;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.text-uppercase { text-transform: uppercase; }
+.tracking-tighter { letter-spacing: -1.5px; }
+.fw-800 { font-weight: 800 !important; }
+.fw-300 { font-weight: 300 !important; }
+.fw-600 { font-weight: 600; }
+
+.gyik-link {
+    color: white;
+    text-decoration: none;
+}
+
+.gyik-link:hover {
+    color: lightgrey;
+}
+
+.btn-logout {
+    background-color: darkred;
+    padding: 5px 10px;
+    color: white;
+    border-style: none;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.btn-logout:hover {
+    background-color: crimson;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: #071F65;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 20px; 
+    font-size: 1.1rem;
+    width: 100%;
+    margin-top: auto;
+}
+
+/* Modern "Fix" button styling */
+.btn-fix {
+    background-color: #071F65;
+    color: white;
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 5px 15px;
+    font-weight: 800;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+
+.btn-fix:hover {
+    background-color: #3E5DBD;
+}
+
+.btn-fix:active {
+    background-color: #071F65;
+}
+
+.table-responsive {
+    border: 2px solid #000; /* Match the custom-card border */
+}
+
+/* Table row polish */
+.table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(7, 31, 101, 0.04);
+}
+
+/* Status Badge Overrides for higher impact */
+.badge-fixed {
+    background-color: #61FF5E;
+    border-color: #000;
+}
+
+.badge-progress {
+    background-color: #FFFB5E;
+    border-color: #000;
+}
+
+/* Maintenance filter alignment */
+.maintenance-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+    flex-wrap: wrap;
+}
+
+.maintenance-topbar .section-heading h1 {
+    margin-bottom: 0;
+}
+
+.maintenance-filter-box {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: nowrap;
+}
+
+.maintenance-filter-label {
+    margin: 0;
+    white-space: nowrap;
+}
+
+.maintenance-select {
+    width: auto;
+    min-width: 170px;
+}
+
+@media (max-width: 991.98px) {
+    .maintenance-topbar {
+        align-items: flex-start;
+    }
+
+    .maintenance-filter-box {
+        margin-left: 0;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .maintenance-select {
+        width: 100%;
+    }
+}
