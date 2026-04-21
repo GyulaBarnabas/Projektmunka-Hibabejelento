@@ -136,23 +136,6 @@ textarea {
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.table-responsive::-webkit-scrollbar {
-    width: 8px;
-}
-
-.table-responsive::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-}
-
-.table-responsive::-webkit-scrollbar-thumb {
-    background: #071F65;
-    border-radius: 10px;
-}
-
-.table-responsive::-webkit-scrollbar-thumb:hover {
-    background: #3E5DBD;
-}
 
 .table thead th {
     position: sticky;

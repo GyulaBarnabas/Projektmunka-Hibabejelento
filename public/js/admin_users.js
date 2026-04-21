@@ -18,6 +18,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const newUserForm = document.getElementById('newUserForm');
         if (newUserForm) newUserForm.addEventListener('submit', handleNewUserSubmit);
+        
+        const filterRole = document.getElementById('filterRole');
+        if (filterRole) filterRole.addEventListener('change', handleFilterChange);
 
     } else {
         document.getElementById('accessDenied').style.display = 'block';
@@ -160,5 +163,45 @@ async function handleDeleteUser(userId, username) {
         console.error('Felhasználó törlési hiba:', error);
         userListErrorDiv.textContent = `Hálózati hiba történt a(z) "${username}" felhasználó törlése során.`;
         alert(`Hálózati hiba történt a(z) "${username}" felhasználó törlése során.`);
+    }
+}
+
+function handleFilterChange() {
+    const filterValue = document.getElementById('filterRole').value;
+    const token = sessionStorage.getItem('authToken');
+    const userListErrorDiv = document.getElementById('userListError');
+    userListErrorDiv.textContent = '';
+
+    if (!token) {
+        window.location.href = 'index.html';
+        return;
+    }
+
+    try {
+        fetch(`${API_BASE_URL}/felhasznalok`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Felhasználók lekérdezése sikertelen.');
+            }
+            return response.json();
+        })
+        .then(users => {
+            let filteredUsers = users;
+            
+            if (filterValue !== '') {
+                filteredUsers = users.filter(user => user.szerep === filterValue);
+            }
+            
+            renderUsers(filteredUsers);
+        })
+        .catch(error => {
+            console.error('Hiba a felhasználók lekérdezésekor:', error);
+            userListErrorDiv.textContent = 'Hálózati hiba történt a felhasználók lekérdezésekor.';
+        });
+    } catch (error) {
+        console.error('Hiba a szűrés során:', error);
+        userListErrorDiv.textContent = 'Hiba történt a szűrés során.';
     }
 }
