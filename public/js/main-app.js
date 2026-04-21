@@ -64,6 +64,16 @@ async function loadUserProfile() {
             if (adminUsersLinkContainer && user.szerep === 'admin') {
                 adminUsersLinkContainer.style.display = 'block';
             }
+
+            // Jogosultság ellenőrzése a karbantartói oldalhoz
+            if (window.location.pathname.includes('maintenance.html') && user.szerep === 'tanar') {
+                window.location.replace('main.html');
+            }
+
+            // Jogosultság ellenőrzése a tanári oldalhoz (Karbantartó átirányítása)
+            if (window.location.pathname.includes('main.html') && user.szerep === 'karbantarto') {
+                window.location.replace('maintenance.html');
+            }
         } else {
             console.error('Profiladatok lekérdezése sikertelen.');
             if (response.status === 401 || response.status === 403) handleLogout();

@@ -6,6 +6,12 @@ const jwt = require('jsonwebtoken');
 
 const PORT = process.env.PORT || 3000;
 const JWT_SECRET = process.env.JWT_SECRET;
+
+if (!JWT_SECRET) {
+  console.error('HIBA: A JWT_SECRET környezeti változó nincs definiálva a .env fájlban!');
+  process.exit(1);
+}
+
 const DB_PATH = process.env.DB_PATH || './hibabejelento.db';
 
 const app = express();

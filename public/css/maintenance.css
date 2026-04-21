@@ -17,6 +17,11 @@
     line-height: 1;
     text-decoration: none;
     display: inline-block;
+    user-select: none; /* Megakadályozza a kijelölést */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    cursor: default; /* Alapértelmezett kurzor a szövegkurzor helyett */
 }
 
 .text-uppercase { text-transform: uppercase; }
