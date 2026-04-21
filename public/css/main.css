@@ -129,6 +129,21 @@ textarea {
     vertical-align: middle;
 }
 
+/* Megakadályozzuk, hogy a leírás szétnyomja a táblázatot */
+.description-cell {
+    white-space: normal !important;
+    word-wrap: break-word;
+}
+
+/* Table row polish */
+.table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(7, 31, 101, 0.04);
+}
+
 .badge-progress { background-color: #FFFB5E; }
 .badge-fixed { background-color: #61FF5E; }
 

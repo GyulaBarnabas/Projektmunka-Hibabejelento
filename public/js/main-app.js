@@ -1,5 +1,6 @@
 // main-app.js
 const API_BASE_URL = 'http://localhost:3000/api';
+const API_BASE_URL = '/api';
 let currentUserProfile = null;
 let allUsersMap = new Map();
 
@@ -97,6 +98,7 @@ async function fetchAllUsers() {
             const users = await response.json();
             users.forEach(user => {
                 allUsersMap.set(user.id, user.felhasznalonev);
+                allUsersMap.set(user.id, user.nev);
             });
         } else {
             console.error('Felhasználók lekérdezése sikertelen.');
@@ -157,8 +159,9 @@ function renderFaults(faults) {
             row.insertCell().textContent = fault.datum;
             row.insertCell().textContent = fault.terem;
             
-            const desc = fault.leiras.length > 25 ? fault.leiras.substring(0, 25) + "..." : fault.leiras;
-            row.insertCell().textContent = desc;
+            const descCell = row.insertCell();
+            descCell.textContent = fault.leiras;
+            descCell.className = "description-cell";
 
             const statusCell = row.insertCell();
             const statusText = isBejelentve ? 'Bejelentve' : 'Kijavítva!';
@@ -183,8 +186,9 @@ function renderFaults(faults) {
             // Simple View for Teachers (3 columns)
         row.insertCell().textContent = fault.terem;
         
-        const shortDesc = fault.leiras.length > 30 ? fault.leiras.substring(0, 30) + "..." : fault.leiras;
-        row.insertCell().textContent = shortDesc;
+        const descCell = row.insertCell();
+        descCell.textContent = fault.leiras;
+        descCell.className = "description-cell";
         
         const statusCell = row.insertCell();
         const statusText = isBejelentve ? 'Bejelentve' : 'Kijavítva!';

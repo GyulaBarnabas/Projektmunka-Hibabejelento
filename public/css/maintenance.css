@@ -32,7 +32,7 @@
 
 .gyik-link {
     color: white;
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 .gyik-link:hover {
@@ -88,6 +88,10 @@ footer {
 
 .table-responsive {
     border: 2px solid #000; /* Match the custom-card border */
+}
+
+.maintenance-table-card {
+    margin-bottom: 2rem;
 }
 
 /* Table row polish */
