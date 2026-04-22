@@ -135,6 +135,7 @@ app.get('/api/profil', authenticateToken, async (req, res) => {
 // 3. GET /api/hibak - Hibák listázása
 app.get('/api/hibak', authenticateToken, async (req, res) => {
   const { allapot } = req.query;
+
   let sql = 'SELECT * FROM hibak';
   const params = [];
 

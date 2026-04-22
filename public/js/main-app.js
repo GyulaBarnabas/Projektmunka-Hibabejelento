@@ -1,5 +1,5 @@
 // main-app.js
-const API_BASE_URL = 'http://localhost:3000/api';
+const API_BASE_URL = '/api';
 let currentUserProfile = null;
 let allUsersMap = new Map();
 
@@ -86,7 +86,7 @@ async function fetchAllUsers() {
         if (response.ok) {
             const users = await response.json();
             users.forEach(user => {
-                allUsersMap.set(user.id, user.felhasznalonev);
+                allUsersMap.set(user.id, user.nev);
             });
         } else {
             console.error('Felhasználók lekérdezése sikertelen.');
