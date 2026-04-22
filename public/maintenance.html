@@ -21,6 +21,9 @@
             <span id="userInfo">Betöltés...</span>
           </div>
           <div class="d-flex align-items-center gap-3">
+            <div id="adminUsersLinkContainer" style="display: none;">
+              <a href="admin_users.html" class="gyik-link">Felhasználók</a>
+            </div>
             <a href="help.html" target="_blank" class="gyik-link">GYIK</a>
             <button id="logoutButton" class="btn-logout">Kijelentkezés</button>
           </div>
@@ -35,34 +38,12 @@
         <h1>Javítandó hibák</h1>
       </div>
       <div class="maintenance-filter-box">
-        <label for="filterStatus" class="form-label maintenance-filter-label">Szűrés állapot szerint:</label>
+        <label for="filterStatus" class="form-label maintenance-filter-label">Szűrés:</label>
         <select id="filterStatus" class="form-select maintenance-select">
           <option value="">Összes</option>
           <option value="bejelentve">Bejelentve</option>
           <option value="kijavítva">Kijavítva</option>
         </select>
-      </div>
-    </div>
-
-    <!-- Új Hiba Bejelentése Űrlap (kezdetben rejtett, JS mutatja meg jogosultságtól függően) -->
-    <div id="newFaultFormContainer" class="custom-card maintenance-form-card mb-4" style="display: none;">
-      <div class="maintenance-card-header">
-        <h2>Új hiba rögzítése</h2>
-        <p>Új hibajegy felvétele a rendszerbe.</p>
-      </div>
-      <div class="maintenance-card-body">
-        <form id="newFaultForm" class="maintenance-form">
-          <div class="mb-3">
-            <label for="newTerem" class="form-label">Terem</label>
-            <input type="text" class="form-control" id="newTerem" required>
-          </div>
-          <div class="mb-3">
-            <label for="newLeiras" class="form-label">Leírás</label>
-            <textarea class="form-control" id="newLeiras" rows="3" required></textarea>
-          </div>
-          <div id="newFaultError" class="text-danger mt-2"></div>
-          <button type="submit" class="btn btn-primary">Hiba bejelentése</button>
-        </form>
       </div>
     </div>
 

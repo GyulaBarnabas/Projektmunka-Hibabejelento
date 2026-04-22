@@ -1,6 +1,5 @@
 // main-app.js
 const API_BASE_URL = 'http://localhost:3000/api';
-const API_BASE_URL = '/api';
 let currentUserProfile = null;
 let allUsersMap = new Map();
 
@@ -50,16 +49,6 @@ async function loadUserProfile() {
             currentUserProfile = user;
             document.getElementById('userInfo').textContent = `Bejelentkezve: ${user.nev} (${user.szerep})`;
 
-            // Új hiba bejelentése űrlap megjelenítése jogosultságtól függően
-            const newFaultFormContainer = document.getElementById('newFaultFormContainer');
-            if (newFaultFormContainer) {
-                if (user.szerep === 'tanar' || user.szerep === 'admin') {
-                    newFaultFormContainer.style.display = 'block';
-                } else {
-                    newFaultFormContainer.style.display = 'none';
-                }
-            }
-
             // Adminisztrációs link megjelenítése, ha a felhasználó admin
             const adminUsersLinkContainer = document.getElementById('adminUsersLinkContainer');
             if (adminUsersLinkContainer && user.szerep === 'admin') {
@@ -98,7 +87,6 @@ async function fetchAllUsers() {
             const users = await response.json();
             users.forEach(user => {
                 allUsersMap.set(user.id, user.felhasznalonev);
-                allUsersMap.set(user.id, user.nev);
             });
         } else {
             console.error('Felhasználók lekérdezése sikertelen.');
