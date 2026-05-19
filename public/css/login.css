@@ -95,8 +95,13 @@ box-shadow: none !important;
 
 #togglePassword:hover {
 background-color: transparent;
-opacity: 0.7;
+opacity: 0.7;  
 }
+
+/*
+  Most stuff related to the password are literally just because implementing a show button is a bit of a pain in the arse.
+  Sorry not sorry.
+*/
 
 .btn-primary {
   background-color: #071F65 !important;

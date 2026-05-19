@@ -1,3 +1,9 @@
+/*
+    I fucked up to put some of the styling inside of the main style.css, so if you see this being linked on most documents it is because I refuse to redo the tables again.
+    Fuck that, ain't gonna struggle with that shit.
+    Should still be relatively fast still anyway.
+*/
+
 .navbar-custom {
     background: linear-gradient(90deg, #071F65 0%, #3E5DBD 100%); 
     padding: 1rem 2rem;
@@ -133,13 +139,11 @@ textarea {
     vertical-align: middle;
 }
 
-/* Megakadályozzuk, hogy a leírás szétnyomja a táblázatot */
 .description-cell {
     white-space: normal !important;
     word-wrap: break-word;
 }
 
-/* Table row polish */
 .table tbody tr {
     transition: background-color 0.2s ease;
 }
@@ -233,7 +237,6 @@ footer div {
     }
 }
 
-/* Desktop layout */
 @media (min-width: 992px) {
     .dashboard-container {
         gap: 2.5rem;

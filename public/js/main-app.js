@@ -1,4 +1,3 @@
-// main-app.js
 const API_BASE_URL = '/api';
 let currentUserProfile = null;
 let allUsersMap = new Map();
@@ -143,7 +142,6 @@ function renderFaults(faults) {
         const isBejelentve = fault.allapot === 'bejelentve';
 
         if (isMaintenanceView) {
-            // Full View for Bug Fixers (8 columns)
             row.insertCell().textContent = fault.datum;
             row.insertCell().textContent = fault.terem;
             
@@ -202,7 +200,6 @@ async function handleNewFaultSubmit(event) {
         });
         const data = await response.json();
         if (response.ok) {
-            // bootstrap.Modal.getInstance(document.getElementById('newFaultModal')).hide(); // Eltávolítva
             loadFaults(document.getElementById('filterStatus').value);
             document.getElementById('newFaultForm').reset();
             newFaultErrorDiv.textContent = ''; // Hibaüzenet törlése sikeres mentés után

@@ -1,4 +1,3 @@
-// login.js
 const API_BASE_URL = '/api';
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -70,7 +69,7 @@ async function handleLogin(event) {
     }
 }
 
-//the below code is for the button to toggle between password and text
+//the below code is for the button to toggle between password and text. The only one I, miopyox, made. Fancy eh? I know :3
 const togglePassword = document.querySelector('#togglePassword');
 const passwordInput = document.querySelector('#jelszo');
 const eyeIcon = document.querySelector('#eyeIcon');

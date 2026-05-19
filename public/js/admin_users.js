@@ -24,8 +24,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     } else {
         document.getElementById('accessDenied').style.display = 'block';
-        // Opcionálisan automatikus átirányítás pár másodperc múlva
-        // setTimeout(() => { window.location.href = 'main.html'; }, 3000);
     }
 
     const logoutButton = document.getElementById('logoutButton');
@@ -127,7 +125,7 @@ async function handleNewUserSubmit(event) {
         });
         const data = await response.json();
         if (response.ok) {
-            loadUsers(); // Frissítjük a listát
+            loadUsers();
             document.getElementById('newUserForm').reset();
         } else {
             newUserErrorDiv.textContent = data.error || 'Hiba történt a felhasználó létrehozása során.';

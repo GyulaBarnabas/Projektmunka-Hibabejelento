@@ -1,6 +1,4 @@
-/* maintenance.css - Styling for the Maintenance Dashboard */
 
-/* --- Navbar & Branding (Matching main.css) --- */
 .navbar-custom {
     background: linear-gradient(90deg, #071F65 0%, #3E5DBD 100%); 
     padding: 1rem 2rem;
@@ -17,11 +15,11 @@
     line-height: 1;
     text-decoration: none;
     display: inline-block;
-    user-select: none; /* Megakadályozza a kijelölést */
+    user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    cursor: default; /* Alapértelmezett kurzor a szövegkurzor helyett */
+    cursor: default;
 }
 
 .text-uppercase { text-transform: uppercase; }
@@ -53,8 +51,9 @@
     background-color: crimson;
 }
 
-/* --- Footer --- */
-footer {
+
+footer { /* This footer is pretty useless, cuz the style.css already deals with it, but in case it brakes we have this as a back up.
+    It looks like shit, but so do errors, so fuck you. */
     background-color: #071F65;
     color: #ffffff;
     text-align: center;
@@ -64,7 +63,7 @@ footer {
     margin-top: auto;
 }
 
-/* Modern "Fix" button styling */
+
 .btn-fix {
     background-color: #071F65;
     color: white;
@@ -87,14 +86,13 @@ footer {
 }
 
 .table-responsive {
-    border: 2px solid #000; /* Match the custom-card border */
+    border: 2px solid #000;
 }
 
 .maintenance-table-card {
     margin-bottom: 2rem;
 }
 
-/* Table row polish */
 .table tbody tr {
     transition: background-color 0.2s ease;
 }
@@ -103,7 +101,6 @@ footer {
     background-color: rgba(7, 31, 101, 0.04);
 }
 
-/* Status Badge Overrides for higher impact */
 .badge-fixed {
     background-color: #61FF5E;
     border-color: #000;
@@ -114,7 +111,6 @@ footer {
     border-color: #000;
 }
 
-/* Maintenance filter alignment */
 .maintenance-topbar {
     display: flex;
     align-items: center;
